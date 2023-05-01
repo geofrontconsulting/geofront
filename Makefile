@@ -17,6 +17,7 @@ clean:
 	rm -rf `find . -type d -name package`
 
 install:
+	npm install -g pnpm
 	make clean
 	pnpm i
 
