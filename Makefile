@@ -26,4 +26,4 @@ build:
 	pnpm build
 
 dev:
-	pnpm --filter="./sites/geofront.io" dev
+	pnpm --filter="./sites/geofront" dev
