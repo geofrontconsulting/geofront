@@ -1,50 +1,80 @@
 <script lang="ts">
-	import '../app.scss';
+	// The ordering of these imports is critical to your app working properly
+	import '@skeletonlabs/skeleton/themes/theme-seafoam.css';
+	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
+	import '@skeletonlabs/skeleton/styles/all.css';
+	// Most of your app wide CSS should be put in this file
+	import '../app.postcss';
+	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 
-	let isNavMenuActive = false;
-	let navbarHeight = 52;
+	let isSidebarShown = false;
+
+	let handleMenuClicked = () => {
+		isSidebarShown = !isSidebarShown;
+	};
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
-<nav
-	class="navbar is-fixed-top is-primary"
-	role="navigation"
-	aria-label="main navigation"
-	bind:clientHeight={navbarHeight}
->
-	<div class="navbar-brand">
-		<a class="navbar-item" href="https://geofront.io">
-			<img src="/assets/logo.png" width="77" height="28" />
-		</a>
+<svelte:head>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	/>
+</svelte:head>
 
-		<a
-			role="button"
-			class="navbar-burger"
-			aria-label="menu"
-			aria-expanded="false"
-			data-target="navbar-menu"
-			on:click={() => {
-				isNavMenuActive = !isNavMenuActive;
-			}}
-		>
-			<span aria-hidden="true" />
-			<span aria-hidden="true" />
-			<span aria-hidden="true" />
-		</a>
-	</div>
+<!-- App Shell -->
+<!-- svelte-ignore a11y-missing-attribute -->
+<AppShell slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 w-56 p-4' : ''}>
+	<svelte:fragment slot="header">
+		<!-- App Bar -->
+		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+			<svelte:fragment slot="lead">
+				<button class="btn btn-sm" on:click={handleMenuClicked} on:keydown={handleEnterKey}>
+					{#if isSidebarShown}
+						<i class="fa-solid fa-xmark fa-xl" />
+					{:else}
+						<i class="fa-solid fa-bars fa-xl" />
+					{/if}
+				</button>
+			</svelte:fragment>
+			<a href="/">
+				<strong class="text-xl uppercase"> GeoFront </strong>
+			</a>
 
-	<div id="navbar-menu" class="navbar-menu {isNavMenuActive ? 'is-active' : ''}">
-		<div class="navbar-start">
-			<a class="navbar-item"> Home </a>
+			<svelte:fragment slot="trail">
+				<a
+					class="btn btn-sm"
+					href="https://github.com/geofrontconsulting"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<i class="fa-brands fa-github fa-2xl" />
+				</a>
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
 
-			<a class="navbar-item"> About </a>
+	<svelte:fragment slot="sidebarLeft">
+		{#if isSidebarShown}
+			<nav class="list-nav">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<!-- <li><a href="/about">About</a></li> -->
+				</ul>
+			</nav>
+		{/if}
+	</svelte:fragment>
 
-			<a class="navbar-item"> Services </a>
-
-			<a class="navbar-item"> Contact </a>
-		</div>
-	</div>
-</nav>
-
-<div style="margin-top: {navbarHeight}px;">
+	<!-- Page Route Content -->
 	<slot />
-</div>
+</AppShell>
