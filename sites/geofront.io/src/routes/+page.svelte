@@ -13,10 +13,7 @@
 
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={data.config.title} />
-	<meta
-		property="og:description"
-		content="{data.config.summary}"
-	/>
+	<meta property="og:description" content={data.config.summary} />
 	<meta property="og:url" content="https://github.com/geofrontconsulting/" />
 	<meta property="og:image" content="/assets/logo-only.png" />
 </svelte:head>
