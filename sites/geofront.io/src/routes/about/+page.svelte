@@ -1,18 +1,21 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { marked } from 'marked';
 
 	export let data: PageData;
+
+	let title = `${data.config.name} | About`;
 </script>
 
 <svelte:head>
-	<title>{data.config.title}</title>
+	<title>{title}</title>
 
 	<meta name="twitter:title" content="SvelteKit" />
 	<meta name="twitter:description" content="Web development, streamlined" />
 	<meta name="description" content={data.config.summary} />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={data.config.title} />
+	<meta property="og:title" content={title} />
 	<meta
 		property="og:description"
 		content="SvelteKit is the official Svelte application framework"
@@ -28,22 +31,7 @@
 			<img src="/assets/logo.svg" />
 		</figure>
 		<div class="justify-center space-x-2 space-y-4">
-			<p>
-				{data.config.summary}
-			</p>
-			<a class="btn variant-filled-primary" href="/about">Read more about GeoFront</a>
-		</div>
-
-		<div class="justify-center space-x-2 space-y-4">
-			<h3 class="font-bold">Our services</h3>
-			<div class="grid md:grid-cols-4 gap-4">
-				{#each data.config.services as service}
-					<a class="flex-col cursor-pointer" href="/services/{service.id}">
-						<p><i class="{service.icon} fa-4x" /></p>
-						<p class="text-xl font-semibold p-2">{service.name}</p>
-					</a>
-				{/each}
-			</div>
+			{@html marked.parse(data.config.description)}
 		</div>
 	</div>
 </div>
