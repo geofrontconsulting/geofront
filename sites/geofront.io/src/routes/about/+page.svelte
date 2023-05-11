@@ -18,10 +18,10 @@
 	<meta property="og:title" content={title} />
 	<meta
 		property="og:description"
-		content="SvelteKit is the official Svelte application framework"
+		content="{data.config.summary}"
 	/>
-	<meta property="og:url" content="https://kit.svelte.dev/" />
-	<meta property="og:image" content="/assets/logo.png" />
+	<meta property="og:url" content="https://github.com/geofrontconsulting/" />
+	<meta property="og:image" content="/assets/logo-only.png" />
 </svelte:head>
 
 <div class="container h-full mx-auto flex justify-center">
