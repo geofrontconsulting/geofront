@@ -1,0 +1,94 @@
+name: GeoFront
+title: GeoFront • your spatial data on the front
+summary: GeoFront is the team of experts dedicated to providing innovative Data solutions for your business needs
+copyright: ©2023 GeoFront
+socialmedia:
+  github: https://github.com/geofrontconsulting
+description: |
+  **GeoFront** is the team of experts dedicated to providing innovative Data solutions for your business needs
+
+  At **GeoFront**, we understand that data and spatial data is a critical component of
+  decision-making processes. That's why we are committed to offering top-notch services that
+  enable you to visualize, analyse, and interpret your data with ease. Our tagline "Your
+  spatial data on the front" encapsulates our commitment to making spatial data accessible to
+  everyone. We believe that by putting spatial data front and centre, we can help you gain
+  valuable insights into your business operations.
+
+  With **GeoFront**, you can expect a wide range of services, including spatial data analysis,
+  mapping, modelling, and visualization. Our team of experts is always ready to work closely
+  with you to understand your unique needs and provide tailor-made solutions that meet your
+  business requirements. Whether you're a small startup or a large enterprise, we've got you
+  covered. Our services are scalable, meaning that we can accommodate your growing needs as
+  your business expands.
+
+  At **GeoFront**, we pride ourselves on delivering exceptional quality services that exceed our
+  clients' expectations. We are passionate about spatial data, and we are dedicated to helping
+  you make informed decisions that drive business growth.
+
+  Thank you for choosing **GeoFront**. Let us be your trusted partner in unlocking the power of
+  spatial data.
+
+  ---
+  <h3 class="h3">Mission:</h3>
+
+  Our mission is to provide innovative data, geospatial and Earth observation solutions that enable sustainable development and improve decision-making across various sectors, including but not limited to water resources, agriculture, natural resource management, and disaster risk reduction.
+
+  ---
+  <h3 class="h3">Vision:</h3>
+
+  Our vision is to be a leading provider of cutting-edge in data, geospatial and Earth observation solutions that address the world's most pressing environmental and social challenges.
+
+  ---
+  <h3 class="h3">Core Values:</h3>
+
+  <h4 class="h4">Innovation</h4>
+  We strive to be at the forefront of technological innovation and to continuously improve our solutions to meet the evolving needs of our clients.
+
+  <h4 class="h4">Quality</h4>
+  We are committed to delivering high-quality products and services that meet or exceed our clients' expectations.
+
+  <h4 class="h4">Sustainability</h4>
+  We believe in promoting sustainable practices in our work and in the solutions we provide to our clients.
+
+  <h4 class="h4">Integrity</h4>
+  We uphold the highest standards of ethical behavior in all aspects of our business.
+
+  <h4 class="h4">Collaboration</h4>
+  We believe in working collaboratively with our clients, partners, and stakeholders to achieve shared goals.
+
+  <h4 class="h4">Diversity and Inclusion</h4>
+  We are committed to fostering a diverse and inclusive work environment that values and respects the contributions of all individuals.
+
+services:
+  - id: gis
+    name: Geographic Information System (GIS)
+    icon: fa-solid fa-earth-africa
+    items:
+      - GIS project planning, design, and implementation
+      - Web mapping and Internet mapping solutions
+      - Custom software development and GIS tool customization
+      - Consulting services for ArcGIS, QGIS, R and Python
+  - id: data
+    name: Data Management and Analysis
+    icon: fa-solid fa-magnifying-glass-chart
+    items:
+      - Comprehensive data analysis and output production
+      - Configuration consulting for data management and analysis systems
+      - Operationalising Earth Observation data for decision-making
+      - Address geocoding and reverse geocoding services
+      - Advanced geostatistical analysis
+  - id: cartography
+    name: Cartography and Modelling
+    icon: fa-solid fa-map
+    items:
+      - Customized cartography and cartographic modelling services
+      - Topological modelling and analysis of geographic data
+      - Creation of territory maps for spatial analysis
+      - Professional redistricting services
+  - id: environment
+    name: Environmental Assessment and Auditing
+    icon: fa-solid fa-seedling
+    items:
+      - Environmental Impact Assessments (EIA) and Environmental Audits (EA)
+      - Multi-criteria decision analysis to evaluate environmental impact
+      - Advanced modelling services to simulate environmental scenarios

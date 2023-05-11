@@ -6,11 +6,20 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import type { PageData } from './$types';
+	import { beforeNavigate } from '$app/navigation';
+
+	export let data: PageData;
 
 	let isSidebarShown = false;
+	let isServiceMenuShown = false;
 
 	let handleMenuClicked = () => {
 		isSidebarShown = !isSidebarShown;
+	};
+
+	let handleServiceMenuClicked = () => {
+		isServiceMenuShown = !isServiceMenuShown;
 	};
 
 	const handleEnterKey = (e: KeyboardEvent) => {
@@ -20,6 +29,11 @@
 			e.target.click();
 		}
 	};
+
+	beforeNavigate(async () => {
+		isSidebarShown = false;
+		isServiceMenuShown = false;
+	});
 </script>
 
 <svelte:head>
@@ -34,7 +48,8 @@
 
 <!-- App Shell -->
 <!-- svelte-ignore a11y-missing-attribute -->
-<AppShell slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 w-56 p-4' : ''}>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<AppShell slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 p-4' : ''}>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -48,13 +63,13 @@
 				</button>
 			</svelte:fragment>
 			<a href="/">
-				<strong class="text-xl uppercase"> GeoFront </strong>
+				<strong class="text-xl uppercase"> {data.config.name} </strong>
 			</a>
 
 			<svelte:fragment slot="trail">
 				<a
 					class="btn btn-sm"
-					href="https://github.com/geofrontconsulting"
+					href={data.config.socialmedia.github}
 					target="_blank"
 					rel="noreferrer"
 				>
@@ -69,7 +84,26 @@
 			<nav class="list-nav">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<!-- <li><a href="/about">About</a></li> -->
+					<li><a href="/about">About</a></li>
+					<li
+						on:mouseleave={() => {
+							isServiceMenuShown = false;
+						}}
+					>
+						<a
+							on:click={handleServiceMenuClicked}
+							on:mouseenter={() => {
+								isServiceMenuShown = true;
+							}}>Service</a
+						>
+						{#if isServiceMenuShown}
+							<ul>
+								{#each data.config.services as service}
+									<li><a href="/services/{service.id}">{service.name}</a></li>
+								{/each}
+							</ul>
+						{/if}
+					</li>
 				</ul>
 			</nav>
 		{/if}
@@ -77,4 +111,8 @@
 
 	<!-- Page Route Content -->
 	<slot />
+
+	<svelte:fragment slot="pageFooter">
+		<p class="flex justify-center p-3"><a href="/">{data.config.copyright}</a></p>
+	</svelte:fragment>
 </AppShell>
