@@ -92,3 +92,20 @@ services:
       - Environmental Impact Assessments (EIA) and Environmental Audits (EA)
       - Multi-criteria decision analysis to evaluate environmental impact
       - Advanced modelling services to simulate environmental scenarios
+teams:
+  - id: isaac-kipkemoi
+    name: Isaac Kipkemoi
+    photo: /assets/teams/isaac-kipkemoi.jpeg
+    description: |
+      PhD researcher at University of Bristol | Hydrology| interests: Dryland Ecology, Remote sensing, Geospatial analytics, python, R, bigdata
+    github: https://github.com/ikipkemoi
+    linkedin: https://www.linkedin.com/in/isaac-kipkemoi-13ba5951
+    twitter: https://twitter.com/kipkemoi_geo
+  - id: jin-igarashi
+    name: Jin Igarashi
+    photo: /assets/teams/jin-igarashi.jpeg
+    description: |
+      FOSS4G software developer for water sector in 🇰🇪,🇷🇼 | MSc Water, Sanitation and Health Engineering (21/22) at University of Leeds
+    github: https://github.com/JinIgarashi
+    linkedin: https://www.linkedin.com/in/jinigarashi
+    twitter: https://twitter.com/j_igarashi

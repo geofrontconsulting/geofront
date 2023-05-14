@@ -85,6 +85,7 @@
 				<ul>
 					<li><a href="/">Home</a></li>
 					<li><a href="/about">About</a></li>
+					<li><a href="/team">Team</a></li>
 					<li
 						on:mouseleave={() => {
 							isServiceMenuShown = false;
