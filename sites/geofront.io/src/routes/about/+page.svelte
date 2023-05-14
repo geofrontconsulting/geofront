@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Teams from '$lib/components/teams.svelte';
 	import type { PageData } from './$types';
 	import { marked } from 'marked';
 
@@ -21,8 +22,8 @@
 	<meta property="og:image" content="/assets/logo-only.png" />
 </svelte:head>
 
-<div class="container h-full mx-auto flex justify-center">
-	<div class="space-y-10 text-center">
+<div class="container h-full mx-auto flex-col justify-center">
+	<div class="space-y-10 text-center pb-6">
 		<h2 class="font-bold">Welcome to {data.config.name}</h2>
 		<figure>
 			<img src="/assets/logo.svg" />
@@ -31,6 +32,9 @@
 			{@html marked.parse(data.config.description)}
 		</div>
 	</div>
+
+	<hr />
+	<Teams />
 </div>
 
 <style lang="postcss">

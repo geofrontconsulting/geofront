@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Teams from '$lib/components/teams.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -18,7 +19,7 @@
 	<meta property="og:image" content="/assets/logo-only.png" />
 </svelte:head>
 
-<div class="container h-full mx-auto flex justify-center">
+<div class="container h-full mx-auto flex-col justify-center">
 	<div class="space-y-10 text-center">
 		<h2 class="font-bold">Welcome to {data.config.name}</h2>
 		<figure>
@@ -43,6 +44,8 @@
 			</div>
 		</div>
 	</div>
+
+	<Teams />
 </div>
 
 <style lang="postcss">

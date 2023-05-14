@@ -13,4 +13,13 @@ export interface Config {
 		icon: string;
 		items: string[];
 	}[];
+	teams: {
+		id: string;
+		name: string;
+		photo: string;
+		description: string;
+		github: string;
+		linkedin: string;
+		twitter: string;
+	}[];
 }
