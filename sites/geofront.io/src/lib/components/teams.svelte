@@ -8,7 +8,7 @@
 
 <div class="p-4 space-y-10">
 	<h3 class="text-center font-bold">Our team</h3>
-	<div class="flex items-center justify-center">
+	<div class="flex-col items-center justify-center">
 		<div class="grid md:grid-cols-2 gap-4">
 			{#each config.teams as team}
 				<div class="flex items-center justify-center">
