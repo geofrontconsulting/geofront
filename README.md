@@ -1,5 +1,8 @@
 # geofront
 
+[![build](https://github.com/geofrontconsulting/geofront.io/actions/workflows/build.yml/badge.svg)](https://github.com/geofrontconsulting/geofront.io/actions/workflows/build.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0fcbaa03-4e80-44b5-9e69-6ce8acd850a2/deploy-status)](https://app.netlify.com/sites/geofront/deploys)
+
 This is a monorepo to manage corporate website for GeoFront.
 
 ## packages
