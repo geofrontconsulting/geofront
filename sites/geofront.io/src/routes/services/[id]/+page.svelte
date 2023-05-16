@@ -3,14 +3,14 @@
 
 	export let data: PageData;
 
-	let title = `${data.config.name} | Services | ${data.service.name}`;
+	let title = `${data.config.name} • Services • ${data.service.name}`;
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 
-	<meta name="twitter:title" content="SvelteKit" />
-	<meta name="twitter:description" content="Web development, streamlined" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={data.config.summary} />
 	<meta name="description" content={data.config.summary} />
 
 	<meta property="og:type" content="website" />
