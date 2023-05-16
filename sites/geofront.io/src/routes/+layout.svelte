@@ -8,6 +8,7 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 	import { beforeNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -28,6 +29,12 @@
 	beforeNavigate(async () => {
 		isSidebarShown = false;
 	});
+
+	$: classesActive = (href: string, hasSubpages = false) => {
+		return (hasSubpages && $page.url.pathname.startsWith(href)) || href === $page.url.pathname
+			? '!bg-primary-700'
+			: '';
+	};
 </script>
 
 <svelte:head>
@@ -43,7 +50,10 @@
 <!-- App Shell -->
 <!-- svelte-ignore a11y-missing-attribute -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<AppShell slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 p-4' : ''}>
+<AppShell
+	slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 p-4' : ''}
+	slotPageFooter="bg-surface-500/5"
+>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -80,20 +90,25 @@
 		{#if isSidebarShown}
 			<nav class="list-nav">
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/team">Team</a></li>
+					<li><a href="/" class={classesActive('/')}>Home</a></li>
+					<li><a href="/about" class={classesActive('/about')}>About</a></li>
+					<li><a href="/team" class={classesActive('/team')}>Team</a></li>
 					<li>
-						<a href="/services">Service</a>
+						<a href="/services" class={classesActive('/services')}>Service</a>
 						<nav class="list-nav pl-4">
 							<ul>
 								{#each data.config.services as service}
-									<li><a href="/services/{service.id}">{service.name}</a></li>
+									<li>
+										<a
+											href="/services/{service.id}"
+											class={classesActive(`/services/${service.id}`)}>{service.name}</a
+										>
+									</li>
 								{/each}
 							</ul>
 						</nav>
 					</li>
-					<li><a href="/docs">Documentation</a></li>
+					<li><a href="/docs" class={classesActive('/docs', true)}>Documentation</a></li>
 				</ul>
 			</nav>
 		{/if}
@@ -103,6 +118,52 @@
 	<slot />
 
 	<svelte:fragment slot="pageFooter">
+		<div class="m-2 grid md:grid-cols-2 gap-4">
+			<div class="flex-row md:mx-auto">
+				<figure>
+					<img class="xl:h-40 md:w-auto" src="/assets/logo.png" />
+				</figure>
+				<div class="flex pt-4 justify-center">
+					<a
+						class="btn btn-sm"
+						href={data.config.socialmedia.github}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<i class="fa-brands fa-github fa-2xl" />
+						<span>Github</span>
+					</a>
+					<a
+						class="btn btn-sm"
+						href={data.config.socialmedia.linkedin}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<i class="fa-brands fa-linkedin fa-2xl" />
+						<span>LinkedIn</span>
+					</a>
+					<a
+						class="btn btn-sm"
+						href={data.config.socialmedia.twitter}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<i class="fa-brands fa-twitter fa-2xl" />
+						<span>Twitter</span>
+					</a>
+				</div>
+			</div>
+			<nav class="list-nav">
+				<ul>
+					<li><a href="/" class={classesActive('/')}>Home</a></li>
+					<li><a href="/about" class={classesActive('/about')}>About</a></li>
+					<li><a href="/team" class={classesActive('/team')}>Team</a></li>
+					<li><a href="/services" class={classesActive('/services', true)}>Service</a></li>
+					<li><a href="/docs" class={classesActive('/docs', true)}>Documentation</a></li>
+				</ul>
+			</nav>
+		</div>
+
 		<p class="flex justify-center p-3"><a href="/">{data.config.copyright}</a></p>
 	</svelte:fragment>
 </AppShell>

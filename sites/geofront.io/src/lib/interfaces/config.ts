@@ -5,6 +5,8 @@ export interface Config {
 	copyright: string;
 	socialmedia: {
 		github: string;
+		linkedin: string;
+		twitter: string;
 	};
 	description: string;
 	services: {
