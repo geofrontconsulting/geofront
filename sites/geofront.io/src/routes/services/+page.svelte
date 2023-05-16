@@ -1,10 +1,10 @@
 <script lang="ts">
+	import Services from '$lib/components/services.svelte';
 	import type { PageData } from './$types';
-	import { marked } from 'marked';
 
 	export let data: PageData;
 
-	let title = `${data.config.name} • About`;
+	let title = `${data.config.name} • Services`;
 </script>
 
 <svelte:head>
@@ -22,33 +22,5 @@
 </svelte:head>
 
 <div class="container h-full mx-auto flex-col justify-center">
-	<div class="space-y-10">
-		<h2 class="font-bold text-center">Welcome to {data.config.name}</h2>
-		<img class="h-auto md:h-96 mx-auto" src="/assets/logo.svg" alt="logo" />
-		<div class="justify-center space-x-2 space-y-4 text-center">
-			{@html marked.parse(data.config.description)}
-		</div>
-	</div>
+	<Services />
 </div>
-
-<style lang="postcss">
-	@keyframes glow {
-		0% {
-			@apply bg-primary-400/50;
-		}
-		33% {
-			@apply bg-secondary-400/50;
-		}
-		66% {
-			@apply bg-tertiary-400/50;
-		}
-		100% {
-			@apply bg-primary-400/50;
-		}
-	}
-	@keyframes pulse {
-		50% {
-			transform: scale(1.5);
-		}
-	}
-</style>

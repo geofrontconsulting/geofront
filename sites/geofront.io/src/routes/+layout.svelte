@@ -12,14 +12,9 @@
 	export let data: PageData;
 
 	let isSidebarShown = false;
-	let isServiceMenuShown = false;
 
 	let handleMenuClicked = () => {
 		isSidebarShown = !isSidebarShown;
-	};
-
-	let handleServiceMenuClicked = () => {
-		isServiceMenuShown = !isServiceMenuShown;
 	};
 
 	const handleEnterKey = (e: KeyboardEvent) => {
@@ -32,7 +27,6 @@
 
 	beforeNavigate(async () => {
 		isSidebarShown = false;
-		isServiceMenuShown = false;
 	});
 </script>
 
@@ -62,8 +56,11 @@
 					{/if}
 				</button>
 			</svelte:fragment>
-			<a href="/">
-				<strong class="text-xl uppercase"> {data.config.name} </strong>
+			<a href="/" class="flex items-center">
+				<img class="h-8 pr-2" src="/assets/logo-only.png" />
+				<strong class="text-xl uppercase">
+					{data.config.name}
+				</strong>
 			</a>
 
 			<svelte:fragment slot="trail">
@@ -86,25 +83,17 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/about">About</a></li>
 					<li><a href="/team">Team</a></li>
-					<li
-						on:mouseleave={() => {
-							isServiceMenuShown = false;
-						}}
-					>
-						<a
-							on:click={handleServiceMenuClicked}
-							on:mouseenter={() => {
-								isServiceMenuShown = true;
-							}}>Service</a
-						>
-						{#if isServiceMenuShown}
+					<li>
+						<a href="/services">Service</a>
+						<nav class="list-nav pl-4">
 							<ul>
 								{#each data.config.services as service}
 									<li><a href="/services/{service.id}">{service.name}</a></li>
 								{/each}
 							</ul>
-						{/if}
+						</nav>
 					</li>
+					<li><a href="/docs">Documentation</a></li>
 				</ul>
 			</nav>
 		{/if}

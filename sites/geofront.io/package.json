@@ -26,6 +26,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"front-matter": "^4.0.2",
 		"js-yaml": "^4.1.0",
 		"marked": "^5.0.1",
 		"postcss": "^8.4.23",
