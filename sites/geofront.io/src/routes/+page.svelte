@@ -23,7 +23,8 @@
 <div class="container h-full mx-auto flex-col justify-center">
 	<div class="space-y-10">
 		<h2 class="font-bold text-center">Welcome to {data.config.name}</h2>
-		<img class="h-96 mx-auto" src="/assets/logo.svg" alt="logo" />
+
+		<img class="h-auto md:h-96 mx-auto" src="/assets/logo.svg" alt="logo" />
 
 		<div class="justify-center space-x-2 space-y-4 text-center">
 			<p>
