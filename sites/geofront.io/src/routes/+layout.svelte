@@ -52,7 +52,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <AppShell
 	slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 p-4' : ''}
-	slotPageFooter="bg-surface-500/5"
+	slotPageFooter="bg-surface-500/40 p-4"
 >
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
@@ -115,7 +115,9 @@
 	</svelte:fragment>
 
 	<!-- Page Route Content -->
-	<slot />
+	<div class="p-4">
+		<slot />
+	</div>
 
 	<svelte:fragment slot="pageFooter">
 		<div class="m-2 grid md:grid-cols-2 gap-4">
