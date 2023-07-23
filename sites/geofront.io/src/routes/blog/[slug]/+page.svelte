@@ -13,12 +13,12 @@
 <svelte:head>
 	<title>{data.page?.title} • Blog • GeoFront</title>
 
-	<meta name="twitter:title" content="GeoFront Documentation" />
+	<meta name="twitter:title" content="{data.page?.title} • Blog • GeoFront" />
 	<meta name="twitter:description" content={data.page?.description} />
 	<meta name="description" content={data.page?.description} />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{data.page?.title} • Documentation • GeoFront" />
+	<meta property="og:title" content="{data.page?.title} • Blog • GeoFront" />
 	<meta property="og:description" content={data.page?.description} />
 	<meta property="og:url" content={$page.url.toString()} />
 	<meta property="og:image" content="/assets/logo-only.png" />
