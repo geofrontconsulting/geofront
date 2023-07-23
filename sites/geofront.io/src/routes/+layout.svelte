@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-seafoam.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -6,13 +7,17 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { LightSwitch, modeCurrent } from '@skeletonlabs/skeleton';
+	import { LightSwitch, modeCurrent, setModeCurrent } from '@skeletonlabs/skeleton';
 
 	import type { PageData } from './$types';
 	import { beforeNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	export let data: PageData;
+
+	onMount(() => {
+		setModeCurrent($modeCurrent);
+	});
 
 	let isSidebarShown = false;
 
