@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Services from '$lib/components/services.svelte';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -17,7 +18,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={data.config.summary} />
-	<meta property="og:url" content="https://github.com/geofrontconsulting/" />
+	<meta property="og:url" content={$page.url.toString()} />
 	<meta property="og:image" content="/assets/logo-only.png" />
 </svelte:head>
 

@@ -28,7 +28,7 @@ export const load: LayoutServerLoad = async () => {
 
 						return {
 							title: metadata.title,
-							path: `${base}/docs/${slug}`
+							path: `${base}/blog/${slug}`
 						};
 					})
 			};

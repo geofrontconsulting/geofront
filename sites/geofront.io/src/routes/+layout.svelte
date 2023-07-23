@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-seafoam.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -6,11 +7,17 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { LightSwitch, modeCurrent, setModeCurrent } from '@skeletonlabs/skeleton';
+
 	import type { PageData } from './$types';
 	import { beforeNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	export let data: PageData;
+
+	onMount(() => {
+		setModeCurrent($modeCurrent);
+	});
 
 	let isSidebarShown = false;
 
@@ -52,28 +59,42 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <AppShell
 	slotSidebarLeft={isSidebarShown ? 'bg-surface-500/5 p-4' : ''}
-	slotPageFooter="bg-surface-500/40 p-4"
+	slotPageFooter="bg-surface-100-800-token p-4"
 >
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 			<svelte:fragment slot="lead">
-				<button class="btn btn-sm" on:click={handleMenuClicked} on:keydown={handleEnterKey}>
+				<button
+					class="btn btn-sm xl:hidden block"
+					on:click={handleMenuClicked}
+					on:keydown={handleEnterKey}
+				>
 					{#if isSidebarShown}
 						<i class="fa-solid fa-xmark fa-xl" />
 					{:else}
 						<i class="fa-solid fa-bars fa-xl" />
 					{/if}
 				</button>
+
+				<a href="/" class="hidden xl:block"> Home </a>
+				<a href="/about" class="hidden xl:block"> About </a>
+				<a href="/team" class="hidden xl:block"> Team </a>
+				<a href="/services" class="hidden xl:block"> Services </a>
+				<a href="/blog" class="hidden xl:block"> Blog </a>
 			</svelte:fragment>
+
 			<a href="/" class="flex items-center">
-				<img class="h-8 pr-2" src="/assets/logo-only.png" />
-				<strong class="text-xl uppercase">
-					{data.config.name}
-				</strong>
+				<img
+					class="h-12"
+					src="/assets/{$modeCurrent
+						? 'Black logo - no background.svg'
+						: 'Color logo - no background.svg'}"
+				/>
 			</a>
 
 			<svelte:fragment slot="trail">
+				<LightSwitch />
 				<a
 					class="btn btn-sm"
 					href={data.config.socialmedia.github}
@@ -108,7 +129,7 @@
 							</ul>
 						</nav>
 					</li>
-					<li><a href="/docs" class={classesActive('/docs', true)}>Documentation</a></li>
+					<li><a href="/blog" class={classesActive('/blog', true)}>Blog</a></li>
 				</ul>
 			</nav>
 		{/if}
@@ -161,7 +182,7 @@
 					<li><a href="/about" class={classesActive('/about')}>About</a></li>
 					<li><a href="/team" class={classesActive('/team')}>Team</a></li>
 					<li><a href="/services" class={classesActive('/services', true)}>Service</a></li>
-					<li><a href="/docs" class={classesActive('/docs', true)}>Documentation</a></li>
+					<li><a href="/blog" class={classesActive('/blog', true)}>Blog</a></li>
 				</ul>
 			</nav>
 		</div>
