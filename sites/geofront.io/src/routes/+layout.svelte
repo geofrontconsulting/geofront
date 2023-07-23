@@ -7,7 +7,13 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { LightSwitch, modeCurrent, setModeCurrent } from '@skeletonlabs/skeleton';
+	import {
+		LightSwitch,
+		modeOsPrefers,
+		modeUserPrefers,
+		modeCurrent,
+		setModeCurrent
+	} from '@skeletonlabs/skeleton';
 
 	import type { PageData } from './$types';
 	import { beforeNavigate } from '$app/navigation';
@@ -16,7 +22,13 @@
 	export let data: PageData;
 
 	onMount(() => {
-		setModeCurrent($modeCurrent);
+		if (!$modeUserPrefers) {
+			// set OS mode preferences for light/dark mode (first time)
+			setModeCurrent($modeOsPrefers);
+		} else {
+			// set user preference (second time or later)
+			setModeCurrent($modeUserPrefers);
+		}
 	});
 
 	let isSidebarShown = false;

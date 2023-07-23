@@ -15,6 +15,8 @@ export const read_file = (file: string) => {
 
 	return {
 		title: attributes.title,
+		description: attributes.description,
+		author: attributes.author,
 		content: marked.parse(content.body)
 	};
 };
