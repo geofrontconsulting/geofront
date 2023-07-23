@@ -17,6 +17,8 @@ export const load: LayoutServerLoad = async () => {
 			const meta = JSON.parse(fs.readFileSync(`${base_dir}/${subdir}/meta.json`, 'utf-8'));
 			return {
 				title: meta.title,
+				description: meta.description,
+				author: meta.author,
 				pages: fs
 					.readdirSync(`${base_dir}/${subdir}`)
 					.filter((file) => pattern.test(file))
@@ -28,6 +30,8 @@ export const load: LayoutServerLoad = async () => {
 
 						return {
 							title: metadata.title,
+							description: metadata.description,
+							author: metadata.author,
 							path: `${base}/blog/${slug}`
 						};
 					})

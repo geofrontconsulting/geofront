@@ -1,5 +1,7 @@
 ---
 title: Introduction
+description: At GeoFront we work with you on your data cantered decision making. We walk you through the Journey of using data in decision making processes?
+author: Isaac Kipkemoi
 ---
 
 At GeoFront we work with you on your data cantered decision making. We walk you through the Journey of using data in decision making processes? Here is an proven approach we have used to allow organizations make use of data;

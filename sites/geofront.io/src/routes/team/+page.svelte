@@ -12,7 +12,7 @@
 	<title>{title}</title>
 
 	<meta name="twitter:title" content="SvelteKit" />
-	<meta name="twitter:description" content="Web development, streamlined" />
+	<meta name="twitter:description" content={data.config.summary} />
 	<meta name="description" content={data.config.summary} />
 
 	<meta property="og:type" content="website" />
