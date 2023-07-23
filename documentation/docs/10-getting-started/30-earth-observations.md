@@ -1,5 +1,7 @@
 ---
 title: Geofront's Work in Operationalizing Earth Observations Data
+description: At Geofront, we specialize in operationalizing Earth observations data for various purposes, including drought monitoring, crop monitoring and environmental degradation, nature-based solutions, and carbon credits estimation.
+author: Isaac Kipkemoi
 ---
 
 At Geofront, we specialize in operationalizing Earth observations data for various purposes, including drought monitoring, crop monitoring and environmental degradation, nature-based solutions, and carbon credits estimation. Our team of experts is dedicated to utilizing advanced technologies and innovative approaches to provide accurate, reliable, and timely information to our clients.

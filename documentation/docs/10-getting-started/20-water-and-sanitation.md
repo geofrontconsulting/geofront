@@ -1,5 +1,7 @@
 ---
 title: Water and sanitation
+description: Your Partner for GIS, Water Asset Management, and NRW Solutions in Eastern Africa
+author: Isaac Kipkemoi
 ---
 
 Geofront: Your Partner for GIS, Water Asset Management, and NRW Solutions in Eastern Africa
